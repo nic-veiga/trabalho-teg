@@ -11,7 +11,22 @@
 #include "dijkstra.h"
 #include "grafo.h"
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 #define ARQUIVO_PADRAO "entrada.txt"
+
+#ifdef _WIN32
+/* O terminal do Windows usa CP850/437 por padrão e mostraria os acentos
+ * (UTF-8) quebrados. Troca para UTF-8 durante a execução e restaura ao sair. */
+static UINT cp_saida_original;
+
+static void restaurar_console(void)
+{
+    SetConsoleOutputCP(cp_saida_original);
+}
+#endif
 
 static void uso(const char *prog)
 {
@@ -158,6 +173,12 @@ int main(int argc, char **argv)
     Componentes cs;
     TipoGrafo tipo;
     int rc = 0;
+
+#ifdef _WIN32
+    cp_saida_original = GetConsoleOutputCP();
+    SetConsoleOutputCP(CP_UTF8);
+    atexit(restaurar_console);
+#endif
 
     for (i = 1; i < argc; i++) {
         if (!strcmp(argv[i], "-h") || !strcmp(argv[i], "--ajuda")) {
