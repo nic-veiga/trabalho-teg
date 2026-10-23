@@ -21,7 +21,7 @@ Requisitos: `gcc` e `make` (`sudo apt install build-essential`).
 
 ```bash
 make                      # gera o executável ./teg
-./teg                     # abre o MENU interativo (carregar, componentes, Dijkstra...) (principal)
+./teg                     # abre o MENU interativo (carregar, componentes, Dijkstra...)
 ./teg entrada.txt         # modo antigo: carrega, mostra o relatório e pergunta palavras
 ./teg entrada.txt lago cena        # consulta direta (origem e destino)
 ./teg -n entrada.txt lago cena     # idem, pulando o relatório (itens 1 a 3)
