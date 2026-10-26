@@ -4,7 +4,7 @@ Implementação em **C (C11)** de um grafo não direcionado e ponderado cujos v�
 palavras de 4 letras e cujas arestas ligam palavras que diferem em **exatamente uma posição**
 (ex.: `lago – logo – lego – cego – cega – cena`).
 
-**Equipe:** _(preencher: nomes e matrículas)_
+**Equipe:** _(Nicolas Oliveira Veiga e Guilherme Wippel Kormann)_
 
 ## O que o programa faz
 
@@ -17,43 +17,7 @@ palavras de 4 letras e cujas arestas ligam palavras que diferem em **exatamente 
 
 ## Compilar e executar (Ubuntu)
 
-Requisitos: `gcc` e `make` (`sudo apt install build-essential`).
-
-```bash
-make                      # gera o executável ./teg
-./teg                     # abre o MENU interativo (carregar, componentes, Dijkstra...)
-./teg entrada.txt         # modo antigo: carrega, mostra o relatório e pergunta palavras
-./teg entrada.txt lago cena        # consulta direta (origem e destino)
-./teg -n entrada.txt lago cena     # idem, pulando o relatório (itens 1 a 3)
-./teg -s entrada.txt               # modo estrito (ver "Decisões de projeto")
-./teg --ajuda
-```
-
-Sem compilar via `make`: `gcc -std=c11 -O2 -o teg src/*.c`.
-
-No modo interativo o programa pergunta a **origem** e o **destino** em loop; uma linha vazia
-(ou `sair`) encerra. Maiúsculas/minúsculas na digitação são indiferentes (`LAGO` = `lago`).
-
-### Testes
-
-```bash
-make test     # compila com AddressSanitizer + UBSan e confere 40 verificações
-make debug    # só gera ./teg com sanitizers, para depuração
-```
-
-## Estrutura
-
-```
-.
-├── Makefile
-├── entrada.txt          # base de palavras (Moodle)
-├── src/
-│   ├── grafo.h/.c       # estruturas, carga do arquivo, construção das arestas, busca
-│   ├── analise.h/.c     # componentes conexos (BFS), graus, simples × multigrafo
-│   ├── dijkstra.h/.c    # Dijkstra com heap binário + reconstrução do caminho
-│   └── main.c           # linha de comando, relatório e consulta interativa
-└── tests/run_tests.sh   # testes automatizados
-```
+execute o comando: gcc -std=c11 -O2 -o teg.exe src/main.c src/grafo.c src/analise.c src/dijkstra.c
 
 ## Decisões de projeto
 
