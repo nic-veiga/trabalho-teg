@@ -15,7 +15,7 @@ palavras de 4 letras e cujas arestas ligam palavras que diferem em **exatamente 
 | (c-ii) Grafo simples ou multigrafo (laços e arestas múltiplas) | Seção **3** |
 | (c-iii) Sequência de arestas entre duas palavras do usuário, via **Dijkstra**, com comparação | Seção **4** |
 
-## Compilar e executar (Ubuntu)
+## Compilar e executar
 
 execute o comando: gcc -std=c11 -O2 -o teg.exe src/main.c src/grafo.c src/analise.c src/dijkstra.c
 
